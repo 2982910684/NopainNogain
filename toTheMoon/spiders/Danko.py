@@ -7,9 +7,10 @@ import re
 import hashlib
 from scrapy_redis.spiders import RedisSpider
 import logging
+from redis import StrictRedis
 
 
-class DankoSpider(scrapy.Spider):
+class DankoSpider(RedisSpider):
     name = 'Danko'
     #allowed_domains = ['www.xxx.com']
     #start_urls = ['http://www.xxx.com/']
@@ -18,7 +19,7 @@ class DankoSpider(scrapy.Spider):
     start_url = 'https://www.amazon.com/s?k=80cc&i=automotive&page=1'
     page_num = 2
 
-
+    # redis_key='win'
 
     def __init__(self):
         #讯代理 动态转发
@@ -30,7 +31,12 @@ class DankoSpider(scrapy.Spider):
         self.sign = hashlib.md5(self.string).hexdigest().upper()
         self.auth = "sign=" + self.sign + "&" + "orderno=" + self.orderno + "&" + "timestamp=" + self.timestamp
         # 计算耗时
-        self.start_time = time.perf_counter()
+        # self.start_time = time.perf_counter()
+
+        #redis ASIN指纹
+        self.redis_conn = StrictRedis(host="localhost",port=6379,db=0)
+        self.pattern_asin = re.compile('dp/([A-Z0-9]+)/')
+
     #
     def start_requests(self):
         yield scrapy.Request(url=self.start_url, callback=self.parse)
@@ -45,17 +51,32 @@ class DankoSpider(scrapy.Spider):
         for list in lists:
 
             url = list.replace('amp;', '')
+            url_asin = list.replace('%2F','/')
+            #添加asin到redis中 asin指纹 如果asin相同就不爬取
+            asin = re.search(self.pattern_asin, url_asin)
+            print(asin.group(1))
+            flag = self.redis_conn.sadd('ASIN',asin.group(1))
+            if flag == 1:
+                item = TothemoonItem()
+                item['asin'] = asin.group(1)
+                new_url = "https://www.amazon.com/" + url
+                item['url'] = new_url
+                yield scrapy.Request(new_url, callback=self.parse_url, meta={'item': item})
 
-            item = TothemoonItem()
-            new_url = "https://www.amazon.com/" + url
-            item['url'] = new_url
-            yield scrapy.Request(new_url, callback=self.parse_url, meta={'item': item})
+        #识别下一页
+        pattern_next = re.compile('<a href="(.*?)">Next')
+        url_next = re.search(pattern_next,page_text)
+        if url_next != None:
+           nextUrl = url_next.group(1).replace('amp;','')
+           new_url = "https://www.amazon.com/"+nextUrl
+           yield scrapy.Request(new_url,callback=self.parse)
+
 
         # 分页
-        if (self.page_num <= 5):
-            new_url = format(self.url % self.page_num)
-            self.page_num += 1
-            yield scrapy.Request(url=new_url, callback=self.parse)
+        # if (self.page_num <= 5):
+        #     new_url = format(self.url % self.page_num)
+        #     self.page_num += 1
+        #     yield scrapy.Request(url=new_url, callback=self.parse)
 
 
 
@@ -65,10 +86,6 @@ class DankoSpider(scrapy.Spider):
 
         page_text = response.text
 
-        #解析ASIN
-        pattern_asin = re.compile('data-asin="([A-Z0-9]+)"',re.S)#re.S 表示 .可以匹配任何字符 包括换行符 如果不加不会匹配换行符
-        item_asin = re.search(pattern_asin,page_text)
-        item['asin'] = item_asin.group(1)
 
         #通过正则表达式解析数据
         pattern_big = re.compile('#([0-9,]+\sin[A-Za-z &]+)\(')
@@ -91,8 +108,11 @@ class DankoSpider(scrapy.Spider):
 
 
         # 统计耗时
-        stop_time = time.perf_counter()
+        # stop_time = time.perf_counter()
+        #
+        # cost = stop_time - self.start_time
+        #
+        # print("%s cost %s second" % (os.path.basename(sys.argv[0]), cost))
 
-        cost = stop_time - self.start_time
-
-        print("%s cost %s second" % (os.path.basename(sys.argv[0]), cost))
+    def close(self, spider):
+        self.redis_conn.connection_pool.disconnect()
