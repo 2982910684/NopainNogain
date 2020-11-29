@@ -100,11 +100,11 @@ REDIS_HOST = 'localhost'
 REDIS_PORT = 6379
 
 #scrapy-redis
-# SCHEDULER = "scrapy_redis.scheduler.Scheduler"
-# DUPEFILTER_CLASS = "scrapy_redis.dupefilter.RFPDupeFilter"
-# # 是否允许暂停
-# SCHEDULER_PERSIST = True
-# # 去调度器中获取数据时，如果为空，最多等待时间（最后没数据，未获取到）。
-# SCHEDULER_IDLE_BEFORE_CLOSE = 10
-#
-# SCHEDULER_QUEUE_CLASS = 'scrapy_redis.queue.PriorityQueue'
+SCHEDULER = "scrapy_redis.scheduler.Scheduler"
+DUPEFILTER_CLASS = "scrapy_redis.dupefilter.RFPDupeFilter"
+# 是否允许暂停
+SCHEDULER_PERSIST = True
+# 去调度器中获取数据时，如果为空，最多等待时间（最后没数据，未获取到）。
+SCHEDULER_IDLE_BEFORE_CLOSE = 10
+
+SCHEDULER_QUEUE_CLASS = 'scrapy_redis.queue.PriorityQueue'

@@ -14,12 +14,10 @@ class DankoSpider(RedisSpider):
     name = 'Danko'
     #allowed_domains = ['www.xxx.com']
     #start_urls = ['http://www.xxx.com/']
-    url = 'https://www.amazon.com/s?k=80cc&i=automotive&page=%d'
 
-    start_url = 'https://www.amazon.com/s?k=80cc&i=automotive&page=1'
-    page_num = 2
+    # start_url = 'https://www.amazon.com/s?k=80cc&i=automotive&page=1'
 
-    # redis_key='win'
+    redis_key='win'
 
     def __init__(self):
         #讯代理 动态转发
@@ -31,15 +29,15 @@ class DankoSpider(RedisSpider):
         self.sign = hashlib.md5(self.string).hexdigest().upper()
         self.auth = "sign=" + self.sign + "&" + "orderno=" + self.orderno + "&" + "timestamp=" + self.timestamp
         # 计算耗时
-        # self.start_time = time.perf_counter()
+        self.start_time = time.perf_counter()
 
         #redis ASIN指纹
         self.redis_conn = StrictRedis(host="localhost",port=6379,db=0)
         self.pattern_asin = re.compile('dp/([A-Z0-9]+)/')
 
     #
-    def start_requests(self):
-        yield scrapy.Request(url=self.start_url, callback=self.parse)
+    # def start_requests(self):
+    #     yield scrapy.Request(url=self.start_url, callback=self.parse)
 
     def parse(self, response):
         page_text = response.text
@@ -72,13 +70,6 @@ class DankoSpider(RedisSpider):
            yield scrapy.Request(new_url,callback=self.parse)
 
 
-        # 分页
-        # if (self.page_num <= 5):
-        #     new_url = format(self.url % self.page_num)
-        #     self.page_num += 1
-        #     yield scrapy.Request(url=new_url, callback=self.parse)
-
-
 
     def parse_url(self, response):
 
@@ -108,11 +99,11 @@ class DankoSpider(RedisSpider):
 
 
         # 统计耗时
-        # stop_time = time.perf_counter()
-        #
-        # cost = stop_time - self.start_time
-        #
-        # print("%s cost %s second" % (os.path.basename(sys.argv[0]), cost))
+        stop_time = time.perf_counter()
+
+        cost = stop_time - self.start_time
+
+        print("%s cost %s second" % (os.path.basename(sys.argv[0]), cost))
 
     def close(self, spider):
         self.redis_conn.connection_pool.disconnect()
