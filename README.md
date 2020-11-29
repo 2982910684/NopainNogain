@@ -38,6 +38,7 @@ if isinstance(agent, self._TunnelingAgent):
 四、redis和mongodb的配置文件修改
 1. redis：bind 127.0.0.1->0.0.0.0  ,  protect-mode Yes->no
 2. mongodb: bind 0.0.0.0
+3. 一定要关闭防火墙
 
 五、使用conda配置环境变量，会更方便
 
