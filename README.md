@@ -16,6 +16,8 @@ twisted
 pywin32
 selenium 如果你自己要用的话，本项目不需要
 
+最坑比的调试：自己做demo调试的时候，除了注意cookie，还要注意UA，我当时UA没有换，只注意调试cookie，发现有时候返回正常页面，有时返回验证码，
+当时以为是cookie的问题，其实是相同的UA访问页面太多次，导致亚马逊给我返回验证码，真的坑
 
 使用前需要手动修改的部分: 
 1. Danko.py中的redis ip地址
@@ -44,5 +46,4 @@ if isinstance(agent, self._TunnelingAgent):
 
 六、使用自己配置的cookie，必须在settings.py中设置 COOKIES_ENABLED = False 
 
-   
    
