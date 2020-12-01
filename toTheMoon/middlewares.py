@@ -587,6 +587,13 @@ class TothemoonDownloaderMiddleware:
         'session-id=137-3054047-4003802; session-id-time=2082787201l; i18n-prefs=USD; skin=noskin; ubid-main=132-9578330-1551023; session-token=4Irl6kJziar2iyNPXMSY83HBNxuoKE7BMYOHoZb74jza3TcZTC8mYe+owzcq26HjC3y3QDuS7xkER7kc1Tx8RZ1O2wF6q2jy/JzmCRQmg0ZQt1qq97+rNd6IDtbbcYUtsEiZQ/rlmrkKvl7BwZTif0g3zhJ5L1S4/moHh8ajpW/c4zesJ3fxlXQaGQF//p7QR8rS/mLDaWvOKuzjQD716tbYbeeMaGsbGp01aOpbWyLmivwuK0EVfQFVc5eNYbvb; lc-main=en_US;',
         'i18n-prefs=USD; session-token=WnBR9lo+x4/yPfHghclPXnlWNl2hg8df2A9MhlhraoQ3MdtK/FkGDsUZQcN53AfWXKW4gKuPzsr+vgScn30dr+taik3yjow0iR3Nwnh4rsITXv4V2BpOTBrOJ9IxbBUPuYh515vIexDosk6oYz3GNO2IbTrehfbwMEkIh01J4i78Q5mJxpulBHeK519hBaWIDWOdCaRhz9omdiVFFDydFGpxBSWPL3Hn9jAEcxIq4qLkxppg57bnYFoXRIrOl/TF; skin=noskin; lc-main=en_US; ubid-main=130-0001889-4203103; session-id-time=2082787201l; session-id=147-4249241-9740010;',
         'session-id=138-2673269-1750555; session-id-time=2082787201l; i18n-prefs=USD; skin=noskin; ubid-main=132-5152894-3784827; session-token=qg04IRyldlXGyfGWccIS5IRRxP9Hj2vz2tS9s3L/xMhMI960dxzhtR6Q7+l3Ma5OExh5Nd6LbHU6MBf1qj4C2KEZHRpnk1ovG3FkYw/DqMNWNSWhnMKnQUlJpAw48n3QlD57RJy4zmFmNdEluaM/6jqx7n+LHyTFl4AE9FBiDW8Jk9UjhSWqsQ7Uwr3IIE4PCOdMftDPfLng9XyO8sIeWRh3ifEHGN7KMojYfpKTB6a8ZAOpQ5ODerEo6A+rnpmN;lc-main=en_US',
+        # 26号 360极速 QQ google 360安全 UC 都来米
+        'session-id=130-7794737-5902868; session-id-time=2082787201l; i18n-prefs=USD; skin=noskin; ubid-main=135-4421906-6622201; session-token=Bifzln67dniyKQOp8LONMJ6jujgFNa9NJT75Adiin4h68It+dl4+ErwT6h4gOMs3jc/jOpdQqaORQ4pFIbQiCLAaWtyVEnOL5y8O1HZ5ufua/Q1rlgkculn/p8W4E1+Ghmnzgd0X2CTh3NYIXagT5fU+RZ5IRN6bO9Bt/yE2NVfjfx6uvn/0FQ1PtFKiLF4jxm3OdrmVdW1GRRh7Hv1u1AnLSoQXAemmCSjB7E8lp9tVcfYrh+noo2t9pDWl64sk;lc-main=en_US',
+        'session-id=138-2466504-1603811; session-id-time=2082787201l; i18n-prefs=USD; lc-main=zh_CN; skin=noskin; ubid-main=131-5008964-0627111; session-token=QZ05IlougMRZdfPtCTZGjmZv32p6WrFcknjQRh4s+H+CAws5uMY0j6bTzOVplCgYQ4tVRQq7ODsZOOlBgF3SDc8oDcDT3JerzKsWjSOnOv3zyFh+98jbnpwtzYJojpLVARHNXKyPSsK1syJK3lGXDyBhbkzL2vGdHHN5n2ilu1KvZiY7t5UxLDg3wxVGwcCCE/J9ka0a1KVSvUSgO2igGrZDOtgSOhigd4IPmIbGCasBJ2JjsW4Q6m0G+xLH7AWM;',
+        'session-id=132-0151458-2703853; session-id-time=2082787201l; i18n-prefs=USD; skin=noskin; ubid-main=132-9520455-6185148; session-token=qx9w91dc7Q/gp7oNjJTJgBEmOWEPOmSr0NolNkWlWLPas3aW303qM7AWhubx4draSOuRPhLY6gfIu2feAdEZi38yyyA8qhyMWv4eZCMtMHshYcXZSXxwWkj3lk9tfkzYC7YYc0pGfXUw0KXl8ctN42R/qbHQQUvUsOL0oZkAMxrLOacKFIJsT5kUqeqjrS68vPlv2CswY6TArBUdKaVdVWtOkKWmSX1VPBB5bvehgTNxEkhtRFUidYcIaxDZ02uD; lc-main=en_US;',
+        'session-id=138-5381094-0957659; session-id-time=2082787201l; i18n-prefs=USD; skin=noskin; ubid-main=131-6086133-8997256; session-token=PkRnzlPMqT+I2hb8UCCZCln9s/GraUlW+g+KK61y+5UGm0Io6KbPpxgSObu5ntzJec76HJSXdmnANQhR22lvY4JZSoyvsn530le15ui8gqkgPtfD6wGV0NrU/wVDZKChDbOQQrgQXBHDmBzPMpP6f1jTvWMoxjD7rWzCymqF/oKQZZKmTqPhjCuC/OFr3yYAPxG0prHSQ+6ksOVAkw2p2CG1bkAGXr7GD3iB8WwT8JicM1x9d3fWkwlWpjGi+Tzn; lc-main=en_US; ',
+        'i18n-prefs=USD; session-token=LkVMfwski8QcVszkw/44eAT8Mj9fb+43K87aib84bN97daybuH7EYNWJZGQc89KQ8Mf9qbRQAzD4IyAfaEuFeHVOz9gl8HyQnjHV04GQOM+Jxn5RGEsQImX8qEaYJ9QRPZu9/kOXwJY5YuupF9UUeYgPJO4VsKrp0Q3xLtvhCP+1yPVrJzIjW5mMB4LUl8AzZoncN4QNHNkLRP99QVhqCaRJvpiFnarQPjWfcouAQohtB6ls4Swo1GrVtFmejPIY; lc-main=en_US; skin=noskin; ubid-main=134-1995097-4458402; session-id-time=2082787201l; session-id=137-5129688-7260404',
+        'session-id=145-5227069-7143331; session-id-time=2082787201l; i18n-prefs=USD; skin=noskin; ubid-main=134-5859041-9933634; session-token=78Gbozw6kY+skYBDnU8wl69fie3L35t3lI+8a3756u/f4X4N0SKJKYIm1yKHTJwoJkDhqIpXSnDLH2e2+E9ly30qkr5mxkoJhy8zMIKyRa4a5Iq7s1t5Ijw/WC5W79iNHbzcryWFSP1tOuCdjUL/upyrfDx7zx+RQnHRiSJ7EFEzdRFnXJobDpCpIncAtG0s5itbeuLFdc8t6lGqPmLszPSflrbC6ok00woYilvMiZQRkzvad1313E2RdH4wmUCI; lc-main=en_US',
     ]
 
     def process_request(self, request, spider):
@@ -611,7 +618,8 @@ class TothemoonDownloaderMiddleware:
 
 
     def process_exception(self, request, exception, spider):
-
+        request.headers['User-Agent'] = random.choice(self.user_agents)
+        request.meta['cookie'] = random.choice(self.cookie)
         request.meta['proxy']  = "http://" + spider.ip_port
 
         return request
