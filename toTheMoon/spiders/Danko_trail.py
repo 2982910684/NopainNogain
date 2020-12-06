@@ -25,7 +25,7 @@ class DankoTrailSpider(scrapy.Spider):
         # 计算耗时
         self.start_time = time.perf_counter()
         # pandas列表
-        amazon_df = pd.read_excel('E:/amazon-su.xlsx') #需自己配置
+        amazon_df = pd.read_excel('E:/amazon-2020.12.1.xlsx') #需自己配置
 
         self.url_list = amazon_df['url'].tolist()
 
@@ -43,7 +43,8 @@ class DankoTrailSpider(scrapy.Spider):
         # 解析ASIN
         pattern_asin = re.compile('data-asin="([A-Z0-9]+)"', re.S)  # re.S 表示 .可以匹配任何字符 包括换行符 如果不加不会匹配换行符
         item_asin = re.search(pattern_asin, page_text)
-        item['asin'] = item_asin.group(1)
+        if item_asin!=None:
+            item['asin'] = item_asin.group(1)
 
         # 通过正则表达式解析数据
         # 解析大类排名

@@ -33,7 +33,7 @@ class DankoSpider(RedisSpider):
 
         #redis ASIN指纹
         self.redis_conn = StrictRedis(host="localhost",port=6379,db=0)
-        self.pattern_asin = re.compile('dp/([A-Z0-9]+)[/?]')
+        self.pattern_asin = re.compile('dp/([A-Z0-9]+)')
 
     #
     # def start_requests(self):
